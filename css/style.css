@@ -1,0 +1,588 @@
+/* ==========================================================================
+   Alberto Bort: Hub Digital - Hoja de Estilos Principal
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variables de Tema (Raíz)
+   -------------------------------------------------------------------------- */
+:root {
+    /* Tema Oscuro (Por Defecto) */
+    --bg-color-dark: #121212;
+    --text-color-dark: #EAEAEA;
+    --text-muted-dark: #B0B0B0;
+    --accent-color-dark: #5D9CEC;
+    --card-bg-dark: #1C1C1C;
+    --card-border-dark: #2A2A2A;
+    --card-hover-border-dark: #4A4A4A;
+    --tooltip-desc-bg-dark: #2F2F2F;
+    --tooltip-desc-text-dark: #E0E0E0;
+    --control-button-color-dark: #B0B0B0;
+    --control-button-hover-color-dark: #FFFFFF;
+    --control-button-bg-dark: rgba(42, 42, 42, 0.7);
+    --tooltip-bg-dark: #333; 
+    --tooltip-text-dark: #FFF; 
+
+    /* Tema Claro */
+    --bg-color-light: #F0F3F5;
+    --text-color-light: #222831;
+    --text-muted-light: #555E68;
+    --accent-color-light: #007BFF;
+    --card-bg-light: #FFFFFF;
+    --card-border-light: #E0E0E0;
+    --card-hover-border-light: #C0C0C0;
+    --tooltip-desc-bg-light: #FFFFFF; 
+    --tooltip-desc-text-light: #33373D; 
+    --control-button-color-light: #555E68;
+    --control-button-hover-color-light: #222831;
+    --control-button-bg-light: rgba(255, 255, 255, 0.7);
+    --tooltip-bg-light: #333; 
+    --tooltip-text-light: #FFF; 
+
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+
+/* --------------------------------------------------------------------------
+   2. Estilos Generales y Cuerpo de la Página
+   -------------------------------------------------------------------------- */
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg-color-dark);
+    color: var(--text-color-dark);
+    padding: 20px;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+body[data-theme="light"] {
+    background-color: var(--bg-color-light);
+    color: var(--text-color-light);
+}
+
+/* Animación de carga para las tarjetas */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(25px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+
+/* --------------------------------------------------------------------------
+   3. Controles de la Página (Botón de Tema)
+   -------------------------------------------------------------------------- */
+.page-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    display: flex;
+    gap: 10px;
+}
+
+.control-button {
+    background-color: var(--control-button-bg-dark);
+    color: var(--control-button-color-dark);
+    border: 1px solid transparent;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.1em;
+    transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+    backdrop-filter: blur(5px);
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+body[data-theme="light"] .control-button {
+    background-color: var(--control-button-bg-light);
+    color: var(--control-button-color-light);
+}
+
+.control-button:hover {
+    color: var(--control-button-hover-color-dark);
+    background-color: var(--accent-color-dark);
+}
+
+body[data-theme="light"] .control-button:hover {
+    color: var(--control-button-hover-color-light);
+    background-color: var(--accent-color-light);
+}
+
+.theme-toggle-button .icon-sun { display: none; }
+.theme-toggle-button .icon-moon { display: inline-block; }
+body[data-theme="light"] .theme-toggle-button .icon-sun { display: inline-block; }
+body[data-theme="light"] .theme-toggle-button .icon-moon { display: none; }
+
+
+/* --------------------------------------------------------------------------
+   4. Cabecera de Perfil e Iconos Sociales
+   -------------------------------------------------------------------------- */
+.profile-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding-top: 50px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 3px solid var(--card-border-dark);
+}
+
+body[data-theme="light"] .profile-avatar { 
+    border-color: var(--card-border-light); 
+}
+
+.profile-name {
+    font-size: 2.6em;
+    font-weight: 700;
+    color: var(--text-color-dark);
+    letter-spacing: -0.5px;
+    margin: 0 0 8px;
+}
+
+body[data-theme="light"] .profile-name { 
+    color: var(--text-color-light); 
+}
+
+.profile-tagline {
+    font-size: 1.1em;
+    font-weight: 400;
+    color: var(--text-muted-dark);
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+body[data-theme="light"] .profile-tagline { 
+    color: var(--text-muted-light); 
+}
+
+.social-icons-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.social-icon-link {
+    display: inline-flex;
+    text-decoration: none;
+    color: var(--text-muted-dark);
+    transition: color 0.2s ease-out, transform 0.2s ease-out;
+    font-size: 1.7em;
+}
+
+body[data-theme="light"] .social-icon-link { 
+    color: var(--text-muted-light); 
+}
+
+.social-icon-link:hover {
+    color: var(--accent-color-dark);
+    transform: scale(1.15);
+}
+
+body[data-theme="light"] .social-icon-link:hover { 
+    color: var(--accent-color-light); 
+}
+
+
+/* --------------------------------------------------------------------------
+   5. Grid del Dashboard y Estilos de Tarjetas
+   -------------------------------------------------------------------------- */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* 5.1. Estructura Base de la Tarjeta */
+.card {
+    background-color: var(--card-bg-dark);
+    border: 1px solid var(--card-border-dark);
+    border-radius: 16px;
+    text-decoration: none;
+    color: var(--text-color-dark);
+    display: flex;
+    min-height: 220px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), 0 1px 4px rgba(0,0,0,0.05);
+    transition: transform 0.2s ease-out, box-shadow 0.2s ease-out, border-color 0.2s ease-out, background-color 0.3s ease, color 0.3s ease;
+    position: relative; /* Contexto para posicionar elementos hijos absolutos */
+    opacity: 0; /* Para animación de entrada */
+}
+
+.card.animate-on-load {
+    animation: fadeInUp 0.6s 0.3s ease-out forwards;
+}
+
+body[data-theme="light"] .card {
+    background-color: var(--card-bg-light);
+    color: var(--text-color-light);
+    border-color: var(--card-border-light);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), 0 1px 4px rgba(0,0,0,0.02);
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: var(--card-hover-border-dark);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15), 0 3px 8px rgba(0,0,0,0.08);
+}
+
+body[data-theme="light"] .card:hover {
+    border-color: var(--card-hover-border-light);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1), 0 3px 8px rgba(0,0,0,0.05);
+}
+
+/* 5.2. Contenido Principal Centrado (Icono y Título) */
+.card-content-main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centrado Vertical */
+    align-items: center;   /* Centrado Horizontal */
+    gap: 18px; /* Espacio entre icono y título */
+    padding: 1px 20px 60px;
+    text-align: center;
+}
+
+.card-icon {
+    margin: 0;
+}
+.card-icon i {
+    font-size: 2.8em;
+    color: var(--text-muted-dark);
+    transition: color 0.2s ease-in-out;
+}
+.card:hover .card-icon i { 
+    color: var(--accent-color-dark); 
+}
+body[data-theme="light"] .card-icon i { 
+    color: var(--text-muted-light); 
+}
+body[data-theme="light"] .card:hover .card-icon i { 
+    color: var(--accent-color-light); 
+}
+
+.card-title {
+    font-size: 1.4em;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    letter-spacing: -0.2px;
+    margin: 0;
+}
+body[data-theme="light"] .card-title { 
+    color: var(--text-color-light); 
+}
+
+/* 5.3. Botones de Acción (Copia e Info) */
+.card-copy-link-button,
+.card-info-button {
+    position: absolute;
+    background: none;
+    border: none;
+    color: var(--text-muted-dark);
+    cursor: pointer;
+    border-radius: 50%;
+    transition: color 0.2s ease, transform 0.2s ease, opacity 0.2s ease;
+    z-index: 2;
+}
+body[data-theme="light"] .card-copy-link-button,
+body[data-theme="light"] .card-info-button {
+    color: var(--text-muted-light);
+}
+
+.card-copy-link-button {
+    top: 15px;
+    right: 15px;
+    font-size: 1em;
+    padding: 5px;
+    opacity: 0.5;
+}
+.card:hover .card-copy-link-button {
+    opacity: 1;
+}
+.card-copy-link-button:hover {
+    color: var(--accent-color-dark);
+    transform: scale(1.1);
+}
+body[data-theme="light"] .card-copy-link-button:hover {
+    color: var(--accent-color-light);
+}
+
+.card-info-button {
+    bottom: 15px;
+    right: 15px;
+    font-size: 1.3em;
+    padding: 8px;
+}
+.card-info-button:hover {
+    color: var(--accent-color-dark);
+    transform: scale(1.1);
+}
+body[data-theme="light"] .card-info-button:hover {
+    color: var(--accent-color-light);
+}
+
+/* 5.4. Tooltips (Copia y Descripción) */
+.card-copy-tooltip {
+    position: absolute;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--tooltip-bg-dark);
+    color: var(--tooltip-text-dark);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 0.8em;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease, visibility 0.2s ease;
+    z-index: 10;
+}
+body[data-theme="light"] .card-copy-tooltip { 
+    background-color: var(--tooltip-bg-light); 
+    color: var(--tooltip-text-light); 
+}
+.card-copy-tooltip.visible { 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+.card-description-tooltip {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 300px;
+    max-height: 80%;
+    overflow-y: auto;
+    background-color: var(--tooltip-desc-bg-dark);
+    color: var(--tooltip-desc-text-dark);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.35);
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out, visibility 0s linear 0.25s;
+    z-index: 100;
+    text-align: left;
+}
+body[data-theme="light"] .card-description-tooltip {
+    background-color: var(--tooltip-desc-bg-light);
+    color: var(--tooltip-desc-text-light);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+.card.is-description-tooltip-visible .card-description-tooltip {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+    transition: opacity 0.25s ease-out, transform 0.25s ease-out, visibility 0s linear 0s;
+}
+.card-description-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: var(--text-color-dark);
+    margin: 0 0 10px 0;
+    text-align: center;
+}
+body[data-theme="light"] .card-description-title {
+    color: var(--text-color-light);
+}
+.card-description-tooltip p {
+    font-size: 0.9em;
+    line-height: 1.6;
+    color: var(--tooltip-desc-text-dark);
+    margin-bottom: 0;
+}
+body[data-theme="light"] .card-description-tooltip p {
+    color: var(--tooltip-desc-text-light);
+}
+
+/* 5.5. Tarjeta Especial (Futurible) */
+.card-futurible { 
+    border-style: dashed; 
+    border-color: var(--text-muted-dark); 
+}
+body[data-theme="light"] .card-futurible { 
+    border-color: var(--text-muted-light); 
+}
+.card-futurible:hover { 
+    border-color: var(--accent-color-dark); 
+}
+body[data-theme="light"] .card-futurible:hover { 
+    border-color: var(--accent-color-light); 
+}
+.card-futurible .card-icon i { 
+    color: var(--text-muted-dark); 
+}
+body[data-theme="light"] .card-futurible .card-icon i { 
+    color: var(--text-muted-light); 
+}
+.futurible-subtext {
+    font-size: 0.9em;
+    color: var(--text-muted-dark);
+    font-weight: 500;
+    margin-top: 8px; /* Aquí sí es útil un margen */
+}
+body[data-theme="light"] .futurible-subtext { 
+    color: var(--text-muted-light); 
+}
+
+/* --------------------------------------------------------------------------
+   5.6. Estilos Específicos para la Tarjeta "Próximamente"
+   -------------------------------------------------------------------------- */
+.card-futurible {
+    cursor: not-allowed; /* Mantenemos el cursor para indicar que no es interactivo */
+}
+
+/* 1. Desenfoamos el contenido original de la tarjeta */
+.card-futurible .card-content-main {
+    filter: blur(1px);
+    opacity: 0.5; /* Lo hacemos más tenue */
+    transition: filter 0.3s ease, opacity 0.3s ease;
+}
+
+/* 2. Creamos la capa superpuesta con el icono y el texto */
+.card-futurible::after {
+    /* --- Contenido: Icono de candado (de FontAwesome) + Texto --- */
+    content: '\f023  Próximamente';
+    
+    /* --- Posicionamiento y tamaño del overlay --- */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    
+    /* --- Centrado perfecto del contenido (icono y texto) --- */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    /* --- Estilo del overlay semitransparente --- */
+    background-color: rgba(30, 30, 30, 0.3); /* Capa oscura para el tema oscuro */
+    backdrop-filter: blur(2px); /* Desenfoque sobre el fondo, estilo iOS/macOS */
+    border-radius: inherit; /* Hereda los bordes redondeados de la tarjeta */
+    
+    /* --- Estilo del texto y del icono --- */
+    /* Le decimos que use FontAwesome para el icono y la fuente principal para el texto */
+    font-family: var(--font-main), 'Font Awesome 6 Free';
+    font-weight: 700; /* Negrita para el icono y el texto */
+    font-size: 1.1em;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    
+    /* Nos aseguramos de que la capa esté por encima de todo */
+    z-index: 5;
+    pointer-events: none; /* La capa no debe interceptar el cursor */
+    
+    /* Transición suave para la aparición */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* 3. Hacemos visible la capa superpuesta al pasar el ratón */
+.card-futurible:hover::after {
+    opacity: 1;
+}
+
+/* 4. Adaptación para el Tema Claro */
+body[data-theme="light"] .card-futurible::after {
+    background-color: rgba(255, 255, 255, 0.4); /* Capa clara para el tema claro */
+    color: rgba(0, 0, 0, 0.7);
+}
+
+/* Anulamos los efectos de hover principales para que no se levante */
+.card-futurible:hover {
+    transform: none;
+    box-shadow: inherit;
+}
+
+/* --------------------------------------------------------------------------
+   6. Pie de Página
+   -------------------------------------------------------------------------- */
+.main-footer {
+    text-align: center;
+    margin-top: 80px;
+    padding-top: 30px;
+    border-top: 1px solid var(--card-border-dark);
+    font-size: 0.95em;
+    color: var(--text-muted-dark);
+    font-weight: 500;
+}
+body[data-theme="light"] .main-footer {
+    border-top-color: var(--card-border-light);
+    color: var(--text-muted-light);
+}
+
+
+/* --------------------------------------------------------------------------
+   7. Diseño Responsivo (Media Queries)
+   -------------------------------------------------------------------------- */
+
+/* Para Tablets y pantallas medianas */
+@media (max-width: 768px) {
+    .profile-header { padding-top: 70px; }
+    .profile-name { font-size: 2.2em; }
+    .profile-tagline { font-size: 1em; }
+    
+    .social-icons-section { gap: 25px; margin-bottom: 50px; }
+    .social-icon-link { font-size: 1.6em; }
+
+    .dashboard-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+    
+    .card-icon i { font-size: 2.5em; }
+    .card-title { font-size: 1.3em; }
+    .card-content-main { gap: 15px; }
+
+    .card-copy-link-button { top: 12px; right: 12px; }
+    .card-info-button { bottom: 12px; right: 12px; font-size: 1.2em; }
+    
+    .card-description-tooltip { width: calc(100% - 20px); padding: 12px; }
+    .card-description-title { font-size: 1.05em; }
+    .card-description-tooltip p { font-size: 0.85em; }
+}
+
+/* Para Móviles */
+@media (max-width: 480px) {
+    body { padding: 15px; }
+    
+    .page-controls { top: 10px; right: 10px; }
+    .control-button { width: 36px; height: 36px; font-size: 1em; }
+    
+    .profile-header { padding-top: 60px; margin-bottom: 30px; }
+    .profile-avatar { width: 80px; height: 80px; margin-bottom: 15px; }
+    .profile-name { font-size: 1.9em; }
+    .profile-tagline { font-size: 0.95em; }
+
+    .social-icons-section { gap: 20px; margin-bottom: 40px; }
+    .social-icon-link { font-size: 1.5em; }
+    
+    .dashboard-grid { grid-template-columns: 1fr; gap: 20px; }
+    
+    .card-icon i { font-size: 2.4em; }
+    .card-title { font-size: 1.25em; }
+    .card-content-main { gap: 12px; }
+
+    .card-copy-link-button { top: 10px; right: 10px; }
+    .card-info-button { bottom: 10px; right: 10px; font-size: 1.1em; }
+    
+    .card-description-tooltip { padding: 10px; }
+    .card-description-title { font-size: 1em; }
+    .card-description-tooltip p { font-size: 0.8em; }
+}
