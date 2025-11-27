@@ -3,157 +3,55 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alberto Bort: Hub Digital</title>
-
+    <title>Alberto Bort | Digital Product Manager</title>
+    
+    <meta name="description" content="Hub digital de Alberto Bort. Proyectos de IA, Desarrollo Web y Product Management.">
+    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" xintegrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="icon" href="img/Alberto_Bort.png" type="image/png">
 </head>
 <body data-theme="dark">
 
-    <div class="page-controls">
-        <button id="theme-toggle" class="control-button theme-toggle-button" aria-label="Cambiar tema">
-            <i class="fa-solid fa-sun icon-sun"></i>
-            <i class="fa-solid fa-moon icon-moon"></i>
+    <div class="background-gradient"></div>
+
+    <div class="controls-container">
+        <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">
+            <span class="icon-container">
+                <i class="fa-solid fa-sun sun-icon"></i>
+                <i class="fa-solid fa-moon moon-icon"></i>
+            </span>
         </button>
     </div>
 
-    <header class="profile-header">
-        <img src="img/Alberto_Bort.jfif" alt="Alberto Bort" class="profile-avatar">
-        <h1 class="profile-name">Alberto Bort</h1>
-        <p class="profile-tagline">AI enthusiast & Digital Product Manager</p>
-    </header>
+    <div class="main-container">
+        <header class="profile-header">
+            <div class="avatar-wrapper">
+                <img src="img/Alberto_Bort.jfif" alt="Alberto Bort" class="avatar">
+                <div class="status-badge" title="Disponible para nuevos retos"></div>
+            </div>
+            <h1 class="name">Alberto Bort</h1>
+            <p class="role">AI Enthusiast & Digital Product Manager</p>
+            
+            <div class="social-pills">
+                <a href="https://github.com/albope" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+                <a href="mailto:albertobort@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
+                <a href="https://www.linkedin.com/in/albertobort/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                <a href="https://x.com/albertobort23" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
+            </div>
+        </header>
 
-    <section class="social-icons-section">
-        <a href="https://github.com/albope" target="_blank" class="social-icon-link" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-        <a href="mailto:albertobort@gmail.com" class="social-icon-link" aria-label="Correo Electrónico"><i class="fa-regular fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/albertobort/" target="_blank" class="social-icon-link" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-        <a href="https://x.com/albertobort23" target="_blank" class="social-icon-link" aria-label="Twitter X"><i class="fa-brands fa-x-twitter"></i></a>
-    </section>
+        <main id="projects-grid" class="bento-grid">
+            </main>
 
-    <main class="dashboard-grid">
-        <a href="https://padel-app-96e21.web.app/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-table-tennis-paddle-ball"></i></div>
-                <h2 class="card-title">Padel App</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Padel App">
-                    <i class="fa-solid fa-link"></i>
-                    <span class="card-copy-tooltip">¡Enlace copiado!</span>
-                </button>
-                <button class="card-info-button" aria-label="Información sobre Padel App"> 
-                    <i class="fa-solid fa-info-circle"></i> 
-                </button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Padel App</h3>
-                <p>Web app para registrar resultados de partidos de pádel entre amigos.</p>
-            </div>
-        </a>
-
-        <a href="https://travel-map-ten.vercel.app/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-map-location-dot"></i></div>
-                <h2 class="card-title">Travel Map Generator</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Travel Map Generator">
-                    <i class="fa-solid fa-link"></i>
-                    <span class="card-copy-tooltip">¡Enlace copiado!</span>
-                </button>
-                <button class="card-info-button" aria-label="Información sobre Travel Map Generator">
-                    <i class="fa-solid fa-info-circle"></i>
-                </button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Travel Map Generator</h3>
-                <p>Aplicación web que permite a los usuarios marcar los países que han visitado en un mapa interactivo.</p>
-            </div>
-        </a>
-        <a href="https://albope.github.io/perfil-profesional/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-user-tie"></i></div>
-                <h2 class="card-title">Perfil Profesional</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Perfil Profesional"><i class="fa-solid fa-link"></i><span class="card-copy-tooltip">¡Enlace copiado!</span></button>
-                <button class="card-info-button" aria-label="Información sobre Perfil Profesional"><i class="fa-solid fa-info-circle"></i></button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Perfil Profesional</h3>
-                <p>Aplicación web diseñada para presentar de forma clara y atractiva mi perfil profesional, resaltando mi trayectoria, habilidades, proyectos y logros más relevantes.</p>
-            </div>
-        </a>
-
-        <a href="https://albertobort.vercel.app/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-briefcase"></i></div>
-                <h2 class="card-title">Portfolio Principal</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Portfolio Principal"><i class="fa-solid fa-link"></i><span class="card-copy-tooltip">¡Enlace copiado!</span></button>
-                <button class="card-info-button" aria-label="Información sobre Portfolio Principal"><i class="fa-solid fa-info-circle"></i></button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Portfolio Principal</h3>
-                <p>Un escaparate de mis proyectos más destacados y mis servicios digitales ofrecidos.</p>
-            </div>
-        </a>
-
-        <a href="https://reportes-jira-eid.vercel.app/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-brands fa-jira"></i></div>
-                <h2 class="card-title">Reportes Jira EID</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Reportes Jira EID"><i class="fa-solid fa-link"></i><span class="card-copy-tooltip">¡Enlace copiado!</span></button>
-                <button class="card-info-button" aria-label="Información sobre Reportes Jira EID"><i class="fa-solid fa-info-circle"></i></button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Reportes Jira EID</h3>
-                <p>Herramienta web que facilita la documentación de incidencias JIRA generando informes estructurados en formato Markdown y Word, mejorando la trazabilidad y la reproducción de errores.</p>
-            </div>
-        </a>
-        
-        <!-- === NUEVO PROYECTO AÑADIDO AQUÍ === -->
-        <a href="https://github.com/albope/validador-csv-python/releases" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-file-csv"></i></div>
-                <h2 class="card-title">Validador CSV</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Validador CSV">
-                    <i class="fa-solid fa-link"></i>
-                    <span class="card-copy-tooltip">¡Enlace copiado!</span>
-                </button>
-                <button class="card-info-button" aria-label="Información sobre Validador CSV"> 
-                    <i class="fa-solid fa-info-circle"></i> 
-                </button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Validador CSV Profesional</h3>
-                <p>App de escritorio para Windows que valida, limpia y previsualiza archivos CSV. Construida con Python, Tkinter y CustomTkinter.</p>
-            </div>
-        </a>
-
-        <a href="https://www.linkedin.com/newsletters/ia-adaptarse-o-quedarse-atr%C3%A1s-7301236162151567362/" target="_blank" class="card">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-newspaper"></i></div>
-                <h2 class="card-title">Newsletter IA</h2>
-                <button class="card-copy-link-button" aria-label="Copiar enlace del proyecto Newsletter IA"><i class="fa-solid fa-link"></i><span class="card-copy-tooltip">¡Enlace copiado!</span></button>
-                <button class="card-info-button" aria-label="Información sobre Newsletter IA"><i class="fa-solid fa-info-circle"></i></button>
-            </div>
-            <div class="card-description-tooltip">
-                <h3 class="card-description-title">Newsletter IA</h3>
-                <p>Newsletter de LinkedIn con publicaciones bisemanales, analizando los impactos, riesgos y tendencias de la IA.</p>
-            </div>
-        </a>
-        
-        <a href="#" target="_blank" class="card card-futurible">
-            <div class="card-content-main">
-                <div class="card-icon"><i class="fa-solid fa-rocket"></i></div>
-                <h2 class="card-title">Futuro Proyecto</h2>
-                <p class="futurible-subtext">(Work in Progress)</p>
-            </div>
-        </a>
-    </main>
-
-    <footer class="main-footer">
-        <p>&copy; 2025 Alberto Bort. Todos los derechos reservados.</p>
-    </footer>
+        <footer class="footer">
+            <p>&copy; 2025 Alberto Bort. Innovation & Design.</p>
+        </footer>
+    </div>
 
     <script src="js/script.js"></script>
 </body>

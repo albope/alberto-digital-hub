@@ -1,105 +1,125 @@
 document.addEventListener('DOMContentLoaded', () => {
-    console.log("Hub Digital Cargado y Listo!");
+    
+    // --- 1. DATOS DE TUS PROYECTOS ---
+    const projects = [
+        {
+            title: "Padel App",
+            icon: "fa-solid fa-table-tennis-paddle-ball",
+            url: "https://padel-app-96e21.web.app/",
+            desc: "Web app para registrar resultados y torneos de pádel.",
+            isNew: false
+        },
+        {
+            title: "Travel Map",
+            icon: "fa-solid fa-map-location-dot",
+            url: "https://travel-map-ten.vercel.app/",
+            desc: "Visualización interactiva de países visitados.",
+            isNew: false
+        },
+        {
+            title: "Perfil Profesional",
+            icon: "fa-solid fa-user-tie",
+            url: "https://albope.github.io/perfil-profesional/",
+            desc: "CV digital interactivo y trayectoria.",
+            isNew: false
+        },
+        {
+            title: "Portfolio",
+            icon: "fa-solid fa-briefcase",
+            url: "https://albertobort.vercel.app/",
+            desc: "Landing page principal de servicios y trabajos.",
+            isNew: false
+        },
+        {
+            title: "Validador CSV",
+            icon: "fa-solid fa-file-csv",
+            url: "https://github.com/albope/validador-csv-python/releases",
+            desc: "Herramienta Python de escritorio para limpiar datos.",
+            isNew: true
+        },
+        {
+            title: "Newsletter IA",
+            icon: "fa-solid fa-newspaper",
+            url: "https://www.linkedin.com/newsletters/ia-adaptarse-o-quedarse-atr%C3%A1s-7301236162151567362/",
+            desc: "Análisis bisemanal sobre el impacto de la IA.",
+            isNew: false
+        },
+        {
+            title: "Próximamente",
+            icon: "fa-solid fa-lock",
+            url: "#",
+            desc: "Nuevo proyecto en desarrollo...",
+            isLocked: true
+        }
+    ];
 
-    // 1. Funcionalidad: Cambio de Tema (Dark/Light Mode)
-    const themeToggleButton = document.getElementById('theme-toggle');
+    // --- 2. RENDERIZADO (Generar HTML) ---
+    const grid = document.getElementById('projects-grid');
+
+    projects.forEach(proj => {
+        const card = document.createElement('a');
+        
+        // Si está bloqueado, no ponemos href
+        if (!proj.isLocked) {
+            card.href = proj.url;
+            card.target = "_blank";
+            card.className = "card";
+        } else {
+            card.className = "card locked";
+        }
+
+        card.innerHTML = `
+            <div class="card-content">
+                <div class="card-top">
+                    <div class="card-icon"><i class="${proj.icon}"></i></div>
+                    ${proj.isNew ? '<span class="badge-new">NEW</span>' : ''}
+                    ${!proj.isLocked ? '<i class="fa-solid fa-arrow-up-right-from-square card-arrow"></i>' : ''}
+                </div>
+                <h3>${proj.title}</h3>
+                <p>${proj.desc}</p>
+            </div>
+        `;
+
+        // Evento Spotlight (Solo si no es móvil para rendimiento)
+        if (window.matchMedia("(hover: hover)").matches) {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        }
+
+        grid.appendChild(card);
+    });
+
+    // --- 3. LÓGICA DE TEMA (DARK / LIGHT) ---
+    const themeBtn = document.getElementById('theme-toggle');
     const body = document.body;
 
+    // Función para aplicar tema
     function applyTheme(theme) {
         body.setAttribute('data-theme', theme);
         localStorage.setItem('theme', theme);
     }
 
+    // Comprobar preferencia guardada o del sistema
     const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
 
     if (savedTheme) {
         applyTheme(savedTheme);
-    } else if (prefersDark) {
-        applyTheme('dark');
     } else {
-        applyTheme('dark'); // Default
+        applyTheme(systemPrefersDark ? 'dark' : 'light');
     }
 
-    if (themeToggleButton) {
-        themeToggleButton.addEventListener('click', () => {
-            const currentTheme = body.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            applyTheme(newTheme);
-        });
-    }
-
-    // 2. Funcionalidad: Animación de Tarjetas al Cargar
-    const cardsForAnimation = document.querySelectorAll('.card');
-    cardsForAnimation.forEach((card) => {
-        card.classList.add('animate-on-load');
+    // Evento Click
+    themeBtn.addEventListener('click', () => {
+        const currentTheme = body.getAttribute('data-theme');
+        const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+        applyTheme(newTheme);
     });
 
-    // 3. Funcionalidad: Mostrar Tooltip de Descripción y Botón "Copiar Enlace"
-    const cards = document.querySelectorAll('.card');
-
-    cards.forEach(card => {
-        const copyButton = card.querySelector('.card-copy-link-button');
-        const copyTooltip = card.querySelector('.card-copy-tooltip');
-        const infoButton = card.querySelector('.card-info-button');
-        const descriptionTooltip = card.querySelector('.card-description-tooltip');
-        
-        // Evento para el botón de copiar enlace
-        if (copyButton && copyTooltip) {
-            copyButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation(); // Evita que el clic se propague al <a>.card
-                
-                const urlToCopy = card.href; // El .card es el <a>, así que tiene .href
-
-                if (!urlToCopy) {
-                    console.error('No se pudo encontrar el enlace de la tarjeta.');
-                    return;
-                }
-
-                navigator.clipboard.writeText(urlToCopy).then(() => {
-                    copyTooltip.classList.add('visible');
-                    setTimeout(() => {
-                        copyTooltip.classList.remove('visible');
-                    }, 1500);
-                }).catch(err => {
-                    console.error('Error al copiar enlace de la tarjeta: ', err);
-                    copyTooltip.textContent = '¡Error!';
-                    copyTooltip.classList.add('visible');
-                    setTimeout(() => {
-                        copyTooltip.classList.remove('visible');
-                        copyTooltip.textContent = '¡Enlace copiado!';
-                    }, 2000);
-                });
-            });
-        }
-
-        // Evento para el botón "Info" -> Mostrar/Ocultar Tooltip de Descripción
-        if (infoButton && descriptionTooltip) {
-            infoButton.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation(); // Evita que el clic se propague al <a>.card
-                
-                // Cerrar otros tooltips abiertos antes de abrir/cerrar el actual
-                document.querySelectorAll('.card.is-description-tooltip-visible').forEach(openCard => {
-                    if (openCard !== card) { // No cierres el que acabamos de clickear si se va a abrir
-                        openCard.classList.remove('is-description-tooltip-visible');
-                    }
-                });
-                
-                // Alternar el tooltip actual
-                card.classList.toggle('is-description-tooltip-visible');
-            });
-        }
-    });
-
-    // Opcional: Cerrar tooltip de descripción si se hace clic fuera de la tarjeta Y no en un botón de info
-    document.addEventListener('click', function(event) {
-        // Si el clic NO fue en un botón de info Y NO fue dentro de un tooltip de descripción visible
-        if (!event.target.closest('.card-info-button') && !event.target.closest('.card-description-tooltip.visible')) {
-            document.querySelectorAll('.card.is-description-tooltip-visible').forEach(openCardTooltip => {
-                openCardTooltip.classList.remove('is-description-tooltip-visible');
-            });
-        }
-    });
+    console.log("Sistema cargado: 100%");
 });
