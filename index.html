@@ -5,22 +5,80 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alberto Bort | Digital Product Manager</title>
     <meta name="description" content="Hub digital de Alberto Bort. Proyectos de IA, Desarrollo Web y Product Management.">
-    
+    <meta name="author" content="Alberto Bort">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://albertobort-digital-hub.vercel.app/">
+    <meta property="og:title" content="Alberto Bort | Digital Product Manager">
+    <meta property="og:description" content="Hub digital con proyectos de IA, Desarrollo Web y Product Management.">
+    <meta property="og:image" content="https://albertobort-digital-hub.vercel.app/img/Alberto_Bort.png">
+    <meta property="og:site_name" content="Alberto Bort Hub">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@albertobort23">
+    <meta name="twitter:creator" content="@albertobort23">
+    <meta name="twitter:title" content="Alberto Bort | Digital Product Manager">
+    <meta name="twitter:description" content="Hub digital con proyectos de IA, Desarrollo Web y Product Management.">
+    <meta name="twitter:image" content="https://albertobort-digital-hub.vercel.app/img/Alberto_Bort.png">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://albertobort-digital-hub.vercel.app/">
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Alberto Bort",
+        "jobTitle": "Digital Product Manager",
+        "description": "AI Enthusiast and Digital Product Manager",
+        "url": "https://albertobort-digital-hub.vercel.app/",
+        "image": "https://albertobort-digital-hub.vercel.app/img/Alberto_Bort.png",
+        "sameAs": [
+            "https://github.com/albope",
+            "https://www.linkedin.com/in/albertobort/",
+            "https://x.com/albertobort23"
+        ]
+    }
+    </script>
+
+    <!-- Preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    
+
+    <!-- Main stylesheet -->
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Favicon -->
     <link rel="icon" href="img/Alberto_Bort.png" type="image/png">
+    <link rel="apple-touch-icon" href="img/Alberto_Bort.png">
+
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#050508">
+
+    <!-- GSAP for premium animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Script with defer for better performance -->
+    <script src="js/script.js" defer></script>
 </head>
 <body data-theme="dark">
+    <!-- Skip Link para accesibilidad (WCAG 2.1) -->
+    <a href="#projects-grid" class="skip-link">Saltar al contenido principal</a>
 
-    <div class="background-gradient"></div>
+    <div class="background-gradient" aria-hidden="true"></div>
+    <div class="cyber-grid" aria-hidden="true"></div>
+    <div class="scanlines" aria-hidden="true"></div>
 
     <div class="controls-container">
-        <button id="theme-toggle" class="theme-btn" aria-label="Cambiar tema">
-            <span class="icon-container">
+        <button type="button" id="theme-toggle" class="theme-btn" aria-label="Cambiar tema de color" title="Cambiar tema">
+            <span class="icon-container" aria-hidden="true">
                 <i class="fa-solid fa-sun sun-icon"></i>
                 <i class="fa-solid fa-moon moon-icon"></i>
             </span>
@@ -30,38 +88,89 @@
     <div class="main-container">
         <header class="profile-header">
             <div class="avatar-wrapper">
-                <img src="img/Alberto_Bort.jfif" alt="Alberto Bort" class="avatar">
-                
-                <div id="github-status" class="status-badge"></div>
-                <div id="status-tooltip" class="status-tooltip">Cargando estado...</div>
+                <img src="img/Alberto_Bort.jfif"
+                     alt="Foto de perfil de Alberto Bort"
+                     class="avatar"
+                     loading="eager"
+                     decoding="async"
+                     width="130"
+                     height="130">
+
+                <div id="github-status"
+                     class="status-badge"
+                     role="status"
+                     aria-label="Estado de actividad en GitHub"></div>
+                <div id="status-tooltip"
+                     class="status-tooltip"
+                     role="tooltip"
+                     aria-live="polite">Cargando estado...</div>
             </div>
 
-            <h1 class="name">Alberto Bort</h1>
-            <p class="role">AI Enthusiast & Digital Product Manager</p>
-            
-            <div class="social-pills">
-                <a href="https://github.com/albope" target="_blank" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
-                <a href="mailto:albertobort@gmail.com" aria-label="Email"><i class="fa-regular fa-envelope"></i></a>
-                <a href="https://www.linkedin.com/in/albertobort/" target="_blank" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
-                <a href="https://x.com/albertobort23" target="_blank" aria-label="X (Twitter)"><i class="fa-brands fa-x-twitter"></i></a>
-            </div>
+            <h1 class="name" data-text="Alberto Bort">Alberto Bort</h1>
+            <p class="role">AI Enthusiast &amp; Digital Product Manager</p>
+
+            <ul class="social-pills" aria-label="Redes sociales">
+                <li>
+                    <a href="https://github.com/albope"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Perfil de GitHub de Alberto Bort">
+                        <i class="fa-brands fa-github" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="mailto:albertobort@gmail.com"
+                       aria-label="Enviar email a Alberto Bort">
+                        <i class="fa-regular fa-envelope" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.linkedin.com/in/albertobort/"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Perfil de LinkedIn de Alberto Bort">
+                        <i class="fa-brands fa-linkedin-in" aria-hidden="true"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://x.com/albertobort23"
+                       target="_blank"
+                       rel="noopener noreferrer"
+                       aria-label="Perfil de X (Twitter) de Alberto Bort">
+                        <i class="fa-brands fa-x-twitter" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
         </header>
 
-        <div class="filters-container">
-            <button class="filter-btn active" data-filter="all">Todos</button>
-            <button class="filter-btn" data-filter="profile">Perfil & Portfolio</button>
-            <button class="filter-btn" data-filter="dev">Desarrollo Web</button>
-            <button class="filter-btn" data-filter="data">Data & IA</button>
-        </div>
+        <nav class="filters-container" aria-label="Filtros de proyectos">
+            <button type="button"
+                    class="filter-btn active"
+                    data-filter="all"
+                    aria-pressed="true">Todos</button>
+            <button type="button"
+                    class="filter-btn"
+                    data-filter="profile"
+                    aria-pressed="false">Perfil &amp; Portfolio</button>
+            <button type="button"
+                    class="filter-btn"
+                    data-filter="dev"
+                    aria-pressed="false">Desarrollo Web</button>
+            <button type="button"
+                    class="filter-btn"
+                    data-filter="data"
+                    aria-pressed="false">Data &amp; IA</button>
+        </nav>
 
-        <main id="projects-grid" class="bento-grid">
-            </main>
+        <main id="projects-grid"
+              class="bento-grid"
+              role="list"
+              aria-label="Lista de proyectos">
+        </main>
 
         <footer class="footer">
-            <p>&copy; 2025 Alberto Bort. Innovation & Design.</p>
+            <p>&copy; <span id="current-year"></span> Alberto Bort. Innovation &amp; Design.</p>
         </footer>
     </div>
-
-    <script src="js/script.js"></script>
 </body>
 </html>
